@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_01_181849) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_072704) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_authors_on_email", unique: true
+    t.index ["username"], name: "index_authors_on_username", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
@@ -24,8 +34,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_01_181849) do
     t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "author_id", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["author_id"], name: "index_comments_on_author_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
+    t.index ["title"], name: "index_posts_on_title", unique: true
   end
 
   add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "authors"
+  add_foreign_key "posts", "authors"
 end
