@@ -1,4 +1,4 @@
-REQUIRE "test_helper"
+require "test_helper"
 
 class AuthorTest < ActiveSupport::TestCase
   # test "the truth" do
