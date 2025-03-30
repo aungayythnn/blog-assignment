@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Confirmation</title>
+</head>
+<body>
+<h1>Flight Confirmation for <%= @user&.username %></h1>
+
+<p>
+  Dear <%= @user&.username %>,
+  Your flight booking has been successfully confirmed. Below are your flight details:
+</p>
+
+<p>
+  <strong>Airline:</strong> Thai Airways <br>
+  <strong>Flight Number:</strong> TG123144 <br>
+
+  <strong>Seat:</strong> M-12
+</p>
+
+<p>
+  To manage your booking or check in, visit:
+  <%= link_to 'Manage My Booking', "flight.com", style: "font-weight: bold; color: blue;" %>
+</p>
+
+<p>Thank you for choosing us. We wish you a pleasant flight!</p>
+
+<p>Safe travels,
+  <strong>The Airline Team</strong></p>
+</body>
+</html>

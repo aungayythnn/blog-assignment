@@ -63,3 +63,4 @@ group :test do
 end
 
 gem "rest-client"
+gem "letter_opener", group: :development

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      UserMailer.with(user: @user).welcome_email.deliver_later
       flash[:notice] = "User created successfully!"
       redirect_to users_list_path
     else
