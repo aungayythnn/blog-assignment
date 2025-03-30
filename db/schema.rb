@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_15_100946) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_30_103117) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -37,6 +37,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_15_100946) do
     t.integer "author_id", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["author_id"], name: "index_comments_on_author_id"
+  end
+
+  create_table "kittens", force: :cascade do |t|
+    t.string "name"
+    t.string "age"
+    t.string "cuteness"
+    t.string "softness"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
